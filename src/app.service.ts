@@ -1,8 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { User } from './types';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getUser(): User {
+    return {
+      id: 1,
+      age: 24,
+      name: 'Athithyan',
+    };
   }
 }
