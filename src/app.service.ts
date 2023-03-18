@@ -1,13 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './types';
+import { Note, PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 @Injectable()
 export class AppService {
-  getUser(): User {
-    return {
-      id: 1,
-      age: 24,
-      name: 'Athithyan',
-    };
+  async getNotes() {
+    return prisma.note.findMany();
+  }
+
+  async createNote(note: Note) {
+    return prisma.note.create({ data: note });
   }
 }
